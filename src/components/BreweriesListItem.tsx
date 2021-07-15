@@ -1,9 +1,9 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import { useState } from "react";
 import BookingForm from "./BookingForm";
 import { OpenFormFunction } from "./BreweriesList";
 import { postNewBooking } from "../breweryDbClient";
-
+import { Brewery } from "./ListContainer";
 const initialForm = {
   firstName: "",
   lastName: "",
@@ -13,26 +13,7 @@ const initialForm = {
 };
 
 type BreweriesListItemProps = {
-  brewery: {
-    id: number;
-    obdb_id: string;
-    name: string;
-    brewery_type: string;
-    street: string;
-    address_2: null | string;
-    address_3: null | string;
-    city: string;
-    state: string;
-    postal_code: string;
-    phone: null | string;
-    website_url: null | string;
-    county_province: null | string;
-    country: string;
-    longitude: null | string;
-    latitude: null | string;
-    updated_at: string;
-    created_at: string;
-  };
+  brewery: Brewery;
   isFormOpen: boolean;
   setOpenForm: (arg: null | number | OpenFormFunction) => void;
 };
@@ -52,8 +33,8 @@ export default function BreweriesListItem({
   setOpenForm,
 }: BreweriesListItemProps) {
   const [form, setForm] = useState(initialForm);
-  const updateForm = (e: any) => {
-    const { name, value } = e.target;
+  const updateForm = (e: SyntheticEvent) => {
+    const { name, value } = e.target as HTMLInputElement;
 
     setForm((form) => ({ ...form, [name]: value }));
   };

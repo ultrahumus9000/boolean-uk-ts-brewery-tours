@@ -9,7 +9,6 @@ type BreweriesListProps = {
 };
 
 export type OpenFormFunction = (arg: number) => number | null;
-
 export default function BreweriesList({ breweries }: BreweriesListProps) {
   const [openForm, setOpenForm] = useState<number | null | OpenFormFunction>(
     null

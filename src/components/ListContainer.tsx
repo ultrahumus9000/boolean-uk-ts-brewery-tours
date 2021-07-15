@@ -5,9 +5,9 @@ import { getBreweriesByState } from "../breweryDbClient";
 
 import BreweriesList from "./BreweriesList";
 
-type Brewery = {
+export type Brewery = {
   id: number;
-  obdb_id: string;
+
   name: string;
   brewery_type: string;
   street: string;
@@ -19,11 +19,6 @@ type Brewery = {
   phone: null | string;
   website_url: null | string;
   county_province: null | string;
-  country: string;
-  longitude: null | string;
-  latitude: null | string;
-  updated_at: string;
-  created_at: string;
 };
 
 export type AllBreweries = Brewery[];

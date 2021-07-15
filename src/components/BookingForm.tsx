@@ -1,9 +1,21 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
+
+type BookingFormProps = {
+  form: {
+    firstName: string;
+    lastName: string;
+    date: string;
+    peopleCount: string;
+    time: string;
+  };
+  updateForm: (e: SyntheticEvent) => void;
+  handleSubmit: () => void;
+};
 export default function BookingForm({
   form: { firstName, lastName, date, peopleCount, time },
   updateForm,
   handleSubmit,
-}) {
+}: BookingFormProps) {
   return (
     <section className="booking-form">
       <h3>Book a tour:</h3>

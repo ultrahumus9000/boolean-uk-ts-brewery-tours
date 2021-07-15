@@ -55,14 +55,13 @@ export default function FilterContainer({
       <div className="filter-by-city-heading">
         <h3>Cities</h3>
         <button
-          onClick={() =>
-            updateFilter({
-              target: {
-                name: "selectedCities",
-                value: [],
-              },
-            })
-          }
+          onClick={(e) => {
+            let newE = {
+              ...e,
+              target: { ...e.target, name: "selectedCities", value: [] },
+            };
+            updateFilter(newE);
+          }}
           className="clear-all-btn"
         >
           clear all
