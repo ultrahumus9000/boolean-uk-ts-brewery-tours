@@ -20,11 +20,9 @@ export default function BookingForm({
     <section className="booking-form">
       <h3>Book a tour:</h3>
       <form
-        onSubmit={(e) => {
+        onSubmit={(e: SyntheticEvent) => {
           e.preventDefault();
           handleSubmit();
-          let element = document.querySelector(".booking-form");
-          // element?.removeChild();
         }}
       >
         <label>

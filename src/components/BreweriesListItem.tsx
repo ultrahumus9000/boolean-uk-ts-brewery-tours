@@ -16,6 +16,7 @@ type BreweriesListItemProps = {
   brewery: Brewery;
   isFormOpen: boolean;
   setOpenForm: (arg: null | number | OpenFormFunction) => void;
+  setIsFormOpen: (arg: boolean) => void;
 };
 
 export default function BreweriesListItem({
@@ -31,6 +32,7 @@ export default function BreweriesListItem({
   },
   isFormOpen,
   setOpenForm,
+  setIsFormOpen,
 }: BreweriesListItemProps) {
   const [form, setForm] = useState(initialForm);
   const updateForm = (e: SyntheticEvent) => {
@@ -61,9 +63,10 @@ export default function BreweriesListItem({
       <section className="booking">
         {
           <button
-            onClick={() =>
-              setOpenForm((openForm) => (openForm === id ? null : id))
-            }
+            onClick={() => {
+              setOpenForm((openForm) => (openForm === id ? null : id));
+              setIsFormOpen(true);
+            }}
           >
             Book a tour
           </button>
@@ -81,6 +84,7 @@ export default function BreweriesListItem({
           handleSubmit={() => {
             postNewBooking({ ...form, breweryId: id });
             clearForm();
+            setIsFormOpen(false);
           }}
           updateForm={updateForm}
           form={form}

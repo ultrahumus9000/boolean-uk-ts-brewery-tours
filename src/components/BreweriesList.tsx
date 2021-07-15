@@ -14,6 +14,8 @@ export default function BreweriesList({ breweries }: BreweriesListProps) {
     null
   );
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <article>
       <ul className="breweries-list">
@@ -22,7 +24,8 @@ export default function BreweriesList({ breweries }: BreweriesListProps) {
             key={brewery.id}
             brewery={brewery}
             setOpenForm={setOpenForm}
-            isFormOpen={brewery.id === openForm}
+            isFormOpen={isFormOpen}
+            setIsFormOpen={setIsFormOpen}
           />
         ))}
       </ul>
