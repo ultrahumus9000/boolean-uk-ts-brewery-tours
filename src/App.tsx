@@ -3,12 +3,12 @@ import Header from "./components/Header";
 import BreweriesSearch from "./components/BreweriesSearch";
 import BookingsContainer from "./components/BookingsContainer";
 import React from "react";
-import "./styles/index.css"
-import "./styles/reset.css"
+import "./styles/reset.css";
+import "./styles/index.css";
 
 export default function App() {
-  const [searchInput, setSearchInput] = useState("");
-  const [showBookings, setShowBookings] = useState(false);
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [showBookings, setShowBookings] = useState<boolean>(false);
 
   return (
     <>
@@ -18,4 +18,3 @@ export default function App() {
     </>
   );
 }
-

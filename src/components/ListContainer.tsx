@@ -5,14 +5,52 @@ import { getBreweriesByState } from "../breweryDbClient";
 
 import BreweriesList from "./BreweriesList";
 
-const parseData = allBreweries =>
-  allBreweries.filter(brewery =>
+type Brewery = {
+  id: number;
+  obdb_id: string;
+  name: string;
+  brewery_type: string;
+  street: string;
+  address_2: null | string;
+  address_3: null | string;
+  city: string;
+  state: string;
+  postal_code: string;
+  phone: null | string;
+  website_url: null | string;
+  county_province: null | string;
+  country: string;
+  longitude: null | string;
+  latitude: null | string;
+  updated_at: string;
+  created_at: string;
+};
+
+export type AllBreweries = Brewery[];
+
+type ListContainerProps = {
+  stateInput: string;
+  setCities: (arg: string[]) => void;
+  filters: { selectedCities: string[]; selectedType: string };
+};
+
+type isSelectedProps = {
+  city: string;
+  brewery_type: string;
+  name: string;
+};
+
+type EventProps = {
+  target: { value: any; name: string };
+};
+const parseData = (allBreweries: AllBreweries) =>
+  allBreweries.filter((brewery) =>
     ["micro", "regional", "brewpub"].includes(brewery["brewery_type"])
   );
 
-const extractCities = allBreweries =>
+const extractCities = (allBreweries: AllBreweries) =>
   allBreweries.reduce(
-    (acc, brewery) =>
+    (acc: string[], brewery) =>
       acc.includes(brewery.city) ? acc : [...acc, brewery.city],
     []
   );
@@ -21,13 +59,14 @@ export default function ListContainer({
   stateInput,
   setCities,
   filters: { selectedCities, selectedType },
-}) {
-  const [breweries, setBreweries] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
+}: ListContainerProps) {
+  const [breweries, setBreweries] = useState<AllBreweries>([]);
+  const [searchInput, setSearchInput] = useState<string>("");
 
-  const applyFilters = allBreweries => allBreweries.filter(isSelected);
+  const applyFilters = (allBreweries: AllBreweries) =>
+    allBreweries.filter(isSelected);
 
-  const isSelected = ({ city, brewery_type, name }) => {
+  const isSelected = ({ city, brewery_type, name }: isSelectedProps) => {
     const lowerCasedInput = searchInput.toLowerCase();
     return (
       (selectedType ? selectedType === brewery_type : true) &&
@@ -41,7 +80,7 @@ export default function ListContainer({
 
   useEffect(() => {
     stateInput &&
-      getBreweriesByState(stateInput).then(data => {
+      getBreweriesByState(stateInput).then((data) => {
         const breweries = parseData(data);
         setBreweries(breweries);
         setCities(extractCities(breweries));
@@ -60,7 +99,7 @@ export default function ListContainer({
             id="search-breweries"
             name="search-breweries"
             value={searchInput}
-            onInput={({ target }) => setSearchInput(target.value)}
+            onInput={({ target }: any) => setSearchInput(target.value)}
             type="text"
           />
         </form>

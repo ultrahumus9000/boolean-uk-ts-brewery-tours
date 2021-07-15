@@ -1,3 +1,76 @@
 {
-  "bookings": []
+  "bookings": [
+    {
+      "firstName": "",
+      "lastName": "",
+      "date": "",
+      "peopleCount": "",
+      "time": "",
+      "breweryId": 14417,
+      "id": 1
+    },
+    {
+      "firstName": "LINLIN",
+      "lastName": "LI",
+      "date": "2021-07-31",
+      "peopleCount": "2",
+      "time": "12:00",
+      "breweryId": 14417,
+      "id": 2
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "date": "",
+      "peopleCount": "",
+      "time": "",
+      "breweryId": 14417,
+      "id": 3
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "date": "",
+      "peopleCount": "",
+      "time": "",
+      "breweryId": 14417,
+      "id": 4
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "date": "",
+      "peopleCount": "",
+      "time": "",
+      "breweryId": 14417,
+      "id": 5
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "date": "",
+      "peopleCount": "",
+      "time": "",
+      "breweryId": 14417,
+      "id": 6
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "date": "",
+      "peopleCount": "",
+      "time": "",
+      "breweryId": 14417,
+      "id": 7
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "date": "",
+      "peopleCount": "",
+      "time": "",
+      "breweryId": 14417,
+      "id": 8
+    }
+  ]
 }

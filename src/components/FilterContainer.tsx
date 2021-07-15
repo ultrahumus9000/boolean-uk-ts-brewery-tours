@@ -1,5 +1,18 @@
-import React from "react";
-function Checkbox({ city, value, handleOnchange }) {
+import React, { SyntheticEvent } from "react";
+
+type CheckboxProps = {
+  city: string;
+  value: boolean;
+  handleOnchange: (e: SyntheticEvent) => void;
+};
+
+type FilterContainerProps = {
+  cities: string[];
+  filterSelections: { selectedCities: string[]; selectedType: string };
+  updateFilter: (e: SyntheticEvent) => void;
+};
+
+function Checkbox({ city, value, handleOnchange }: CheckboxProps) {
   return (
     <>
       <input
@@ -19,11 +32,11 @@ export default function FilterContainer({
   cities,
   filterSelections: { selectedCities, selectedType },
   updateFilter,
-}) {
+}: FilterContainerProps) {
   return (
     <aside className="filters-section">
       <h2>Filter By:</h2>
-      <form id="filter-by-type-form" autocompete="off">
+      <form id="filter-by-type-form">
         <label htmlFor="filter-by-type">
           <h3>Type of Brewery</h3>
         </label>
@@ -43,7 +56,12 @@ export default function FilterContainer({
         <h3>Cities</h3>
         <button
           onClick={() =>
-            updateFilter({ target: { name: "selectedCities", value: [] } })
+            updateFilter({
+              target: {
+                name: "selectedCities",
+                value: [],
+              },
+            })
           }
           className="clear-all-btn"
         >
@@ -51,7 +69,7 @@ export default function FilterContainer({
         </button>
       </div>
       <form id="filter-by-city-form">
-        {cities.map(city => (
+        {cities.map((city) => (
           <Checkbox
             city={city}
             value={selectedCities.includes(city)}

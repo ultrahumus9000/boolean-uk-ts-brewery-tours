@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import BookingForm from "./BookingForm";
-
+import { OpenFormFunction } from "./BreweriesList";
 import { postNewBooking } from "../breweryDbClient";
 
 const initialForm = {
@@ -10,6 +10,31 @@ const initialForm = {
   date: "",
   peopleCount: "",
   time: "",
+};
+
+type BreweriesListItemProps = {
+  brewery: {
+    id: number;
+    obdb_id: string;
+    name: string;
+    brewery_type: string;
+    street: string;
+    address_2: null | string;
+    address_3: null | string;
+    city: string;
+    state: string;
+    postal_code: string;
+    phone: null | string;
+    website_url: null | string;
+    county_province: null | string;
+    country: string;
+    longitude: null | string;
+    latitude: null | string;
+    updated_at: string;
+    created_at: string;
+  };
+  isFormOpen: boolean;
+  setOpenForm: (arg: null | number | OpenFormFunction) => void;
 };
 
 export default function BreweriesListItem({
@@ -25,12 +50,12 @@ export default function BreweriesListItem({
   },
   isFormOpen,
   setOpenForm,
-}) {
+}: BreweriesListItemProps) {
   const [form, setForm] = useState(initialForm);
-  const updateForm = e => {
+  const updateForm = (e: any) => {
     const { name, value } = e.target;
 
-    setForm(form => ({ ...form, [name]: value }));
+    setForm((form) => ({ ...form, [name]: value }));
   };
 
   const clearForm = () => setForm(initialForm);
@@ -56,7 +81,7 @@ export default function BreweriesListItem({
         {
           <button
             onClick={() =>
-              setOpenForm(openForm => (openForm === id ? null : id))
+              setOpenForm((openForm) => (openForm === id ? null : id))
             }
           >
             Book a tour
