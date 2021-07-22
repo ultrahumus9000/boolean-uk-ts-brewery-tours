@@ -8,15 +8,6 @@ type SearchInputProps = {
   searchInput: string;
 };
 
-// export type EventArg = {
-//   target: {
-//     name: string;
-//     value: string | [];
-//     checked?: boolean;
-//     type?: string;
-//   };
-// };
-
 export default function BreweriesSearch({ searchInput }: SearchInputProps) {
   const [cities, setCities] = useState<string[]>([]);
   const [filters, setFilters] = useState({

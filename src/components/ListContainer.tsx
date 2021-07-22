@@ -7,7 +7,6 @@ import BreweriesList from "./BreweriesList";
 
 export type Brewery = {
   id: number;
-
   name: string;
   brewery_type: string;
   street: string;
